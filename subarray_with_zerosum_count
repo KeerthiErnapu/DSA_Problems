@@ -1,0 +1,27 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class HelloWorld {
+    public static void zerSum(int arr[]){
+        int total=0,presum=0;
+        Map<Integer,Integer> h=new HashMap<>();
+        h.put(0,1);
+        for(int i=0;i<arr.length;i++){
+            presum+=arr[i];
+            if(h.containsKey(presum)){
+                total+=h.get(presum);
+                h.put(presum, h.get(presum) + 1);
+
+            }
+            else{
+                h.put(presum,1);
+            }
+        }
+        System.out.println(total);
+    }
+    public static void main(String[] args) {
+        int arr[]={6,4,-5,1,8,3,2,-10,-4,0,4,-9};
+        HelloWorld h=new HelloWorld();
+        h.zerSum(arr);
+    }
+}
