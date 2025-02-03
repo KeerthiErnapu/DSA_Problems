@@ -1,0 +1,48 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        int k=s.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=s.nextInt();
+        }
+        if(n>k){
+            int[] temp=new int[n];
+            int in=0;
+            for(int i=n-k;i<n;i++){
+                temp[in++]=arr[i];
+            }
+            for(int i=0;i<n-k;i++){
+                temp[in++]=arr[i];
+            }
+            for(int i=0;i<n;i++){
+            System.out.print(temp[i]+" ");
+        }
+        }
+        else if(k>n){
+             int[] temp=new int[n];
+            int in=0;
+            int si=k%n;
+            for(int i=n-si;i<n;i++){
+                temp[in++]=arr[i];
+            }
+            for(int i=0;i<n-si;i++){
+                temp[in++]=arr[i];
+            }
+            for(int i=0;i<n;i++){
+            System.out.print(temp[i]+" ");
+        }
+        }
+        else{
+            for(int i=0;i<n;i++){
+                System.out.print(arr[i]+" ");
+            }
+        }
+        
+        
+    }
+}
