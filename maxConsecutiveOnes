@@ -1,0 +1,25 @@
+"sliding window"
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int first=0, sec=0;
+        int res=0;
+        while(sec<nums.length){
+            if(nums[first]==1){
+                int c=1;
+                while((sec+1)< nums.length && nums[sec+1]==1){
+                    c++;
+                    sec++;
+                }
+                first+=c;
+                sec=first;
+                res=Math.max(res,c);
+            }
+            else{
+                first++;
+                sec=first;
+            }
+        }
+        return res;
+        
+    }
+}
