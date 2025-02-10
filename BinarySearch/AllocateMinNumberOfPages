@@ -1,0 +1,39 @@
+public class Solution {
+    public static boolean isValid(ArrayList<Integer> A, int n, int b, int mid){
+        int st=1,pages=0;
+        for(int i=0;i<A.size();i++){
+            if(A.get(i)>mid){
+                return false;
+            }
+            if(A.get(i)+pages<=mid){
+                pages+=A.get(i);
+            }
+            else{
+                st++;
+                pages=A.get(i);
+            }
+        }
+        return st>b?false:true;
+    }
+    public int books(ArrayList<Integer> A, int B) {
+        if(B>A.size()){
+            return -1;
+        }
+        int sum=0;
+        for(int i=0;i<A.size();i++){
+            sum+=A.get(i);
+        }
+        int s=0,e=sum,res=-1;
+        while(s<=e){
+            int mid=s+(e-s)/2;
+        if(isValid(A,A.size(),B,mid)){
+            res=mid;
+            e=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+        }
+        return res;
+    }
+}
