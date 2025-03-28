@@ -1,0 +1,35 @@
+class Solution {
+    // Function to detect a cycle in an undirected graph.
+    public boolean isCycle(ArrayList<ArrayList<Integer>> adj) {
+        int[] visited = new int[adj.size()];
+        Arrays.fill(visited, 0);
+         
+        
+        for (int i = 0; i < visited.length; i++) {
+            if (visited[i] == 0 && cycle(adj, i, -1, visited)) { // Start DFS from unvisited nodes
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean cycle(ArrayList<ArrayList<Integer>> adj, int v, int parent, int[] visited) {
+       ; // Mark the current node as visited
+            visited[0]=1;
+        for (int i = 0; i < adj.get(v).size(); i++) {
+            int neighbor = adj.get(v).get(i);
+            if (neighbor == parent) { // Ignore the edge leading back to parent
+                continue;
+            }
+            if (visited[neighbor] == 0) { // Unvisited node, continue DFS
+            visited[adj.get(v).get(i)]=1;
+                if (cycle(adj, neighbor, v, visited)) {
+                    return true; // Cycle detected
+                }
+            } else { 
+                return true; // If visited and not parent, cycle detected
+            }
+        }
+        return false;
+    }
+}
